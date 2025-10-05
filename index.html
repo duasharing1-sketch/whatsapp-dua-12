@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dua 12 - Dua Sharing</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dua 12</title>
 </head>
 <body>
   <a id="manualLink" href="#" target="_blank" style="display:none;">Open WhatsApp</a>
-
   <script>
     const message = `*Are you with those who Allah loves?*
 
-This powerful dua calls upon Allah — Al-Wadūd, (the Most Loving) — to fill our lives with the love of those whom He Himself loves. It seeks companionship with the sincere and the righteous — those whose love benefits us in this world, and elevates us in the next.
+This powerful dua calls upon Allah — Al-Wadūd, (the Most Loving) — to fill our lives with the love of those whom He Himself loves. It seeks companionship with the sincere and the righteous  — those whose love benefits us in this world, and elevates us in the next.
 
 Because who surrounds your heart will shape your path.
 
@@ -35,36 +34,25 @@ Access the full supplication in both English and Arabic at: https://www.duashari
 
 When you share this post, you’re not simply sharing a dua. You’re opening the door to millions of people making sincere dua for you — with the Malaika (Angels) themselves saying “Ameen” to every single one.
 
-May Allah accept it from you, and from everyone it reaches through you.
+May Allah accept it from you, and reward you for all those it reaches through you.
 
 Ameen`;
 
-    const fallbacks = {
-      'ﷻ': 'ﷻ (may His Majesty be exalted)',
-      'ﷺ': 'ﷺ (peace be upon him)'
-    };
-
-    let messageWithFallback = message;
-    for (const [symbol, replacement] of Object.entries(fallbacks)) {
-      messageWithFallback = messageWithFallback.replace(new RegExp(symbol, 'g'), replacement);
-    }
-
-    const encodedText = encodeURIComponent(messageWithFallback);
+    const encodedText = encodeURIComponent(message);
     const waProtocol = "whatsapp://send?text=" + encodedText;
     const waWeb = "https://wa.me/?text=" + encodedText;
-
     const manualLink = document.getElementById('manualLink');
     manualLink.href = waWeb;
 
     async function tryShare() {
       try {
         if (navigator.share) {
-          await navigator.share({ text: messageWithFallback });
+          await navigator.share({ text: message });
         } else {
           window.location.href = waProtocol;
           setTimeout(() => { window.location.href = waWeb; }, 1200);
         }
-      } catch (err) {
+      } catch (e) {
         window.location.href = waWeb;
       }
     }
@@ -73,3 +61,4 @@ Ameen`;
   </script>
 </body>
 </html>
+
